@@ -43,17 +43,11 @@ ___
 ## Factory
 ###Properties:  
 
-  ``ckoloring : BOOL``
-  <br />
-  <br />
-  - Flag that determines if the color wheel is open or not.
+  ``ckoloring : BOOL`` - Flag that determines if the color wheel is open or not.
   <br />
   <br />
   <br />
-  ``display : STRING``
-  <br />
-  <br />
-  - Color mode that is displayed, auto selected by model's color mode and changed by the dropdown selection.
+  ``display : STRING`` - Color mode that is displayed, auto selected by model's color mode and changed by the dropdown selection.
   <br />
   <br />
   <br />
