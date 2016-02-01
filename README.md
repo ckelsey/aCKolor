@@ -41,20 +41,13 @@ ___
 <br />
 <br />
 ## Factory
-###Properties:  
+####Properties:  
 
   ``ckoloring : BOOL`` - Flag that determines if the color wheel is open or not.
-  <br />
-  <br />
-  <br />
+
   ``display : STRING`` - Color mode that is displayed, auto selected by model's color mode and changed by the dropdown selection.
-  <br />
-  <br />
-  <br />
-  ``inputHsl : {h:FLOAT, s:FLOAT, l:FLOAT}``
-  <br />
-  <br />
-  - HSL number input values - hue, saturation, lightness.
+  
+  ``inputHsl : {h:FLOAT, s:FLOAT, l:FLOAT}`` - HSL number input values - hue, saturation, lightness.
   <br />
   <br />
   <br />
