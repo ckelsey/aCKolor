@@ -39,8 +39,7 @@ ___
   <a-ckolor-wheel></a-ckolor-wheel>
   ```
 
-
-
+<br />
 ## Factory
 ####Properties:  
 
