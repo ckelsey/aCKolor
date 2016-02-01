@@ -7,6 +7,8 @@ Color picker for angular.
 
 angular.module('app', ['aCKolor'])
 
+[Live demo](http://cklsylabs.com/#/ackolor)
+
 <br />
 ## Directives
 
