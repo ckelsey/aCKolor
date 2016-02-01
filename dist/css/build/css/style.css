@@ -1,0 +1,361 @@
+a-ckolor-wheel {
+  display: block;
+  position: absolute;
+  z-index: 9999;
+  filter: none !important;
+}
+
+.c-ckolor__input-row {
+  margin: 14px 0px;
+}
+
+.c-ckolor__input-wrapper {
+  width: 200px;
+  height: 21px;
+  line-height: 21px;
+  padding: 7px;
+  background: #fff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.14), 0px 3px 10px rgba(0, 0, 0, 0.035);
+  border-radius: 2px;
+  margin: 7px 0px;
+  font-size: 14px;
+  color: #555;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.c-ckolor__input-wrapper button {
+  outline: none !important;
+  background: transparent;
+  border: none;
+  -webkit-appearance: none;
+  width: 28px;
+  font-size: 18px;
+  padding: 0px;
+  color: #fff;
+  opacity: .7;
+  box-shadow: none;
+  margin: 0px 0px 0px 5px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.c-ckolor__input-wrapper button:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+.c-ckolor__input-wrapper span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.c-ckolor__overlay, .c-ckolor__overlay-unblur {
+  filter: none;
+  transition: filter .2s;
+}
+
+.c-ckolor__overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  background: rgba(0, 0, 0, 0.77);
+  z-index: 9999;
+}
+.c-ckolor__overlay input {
+  color: #aaa;
+  font-size: 14px;
+  text-align: center;
+  font-style: normal;
+  text-transform: uppercase;
+  display: inline-block;
+  height: 19px;
+  background: rgba(255, 255, 255, 0.07);
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  padding: 0px 3px;
+  margin: 0px;
+  -webkit-appearance: none;
+  outline: none !important;
+  transition: all .2s;
+}
+.c-ckolor__overlay input:hover, .c-ckolor__overlay input:focus {
+  background: rgba(255, 255, 255, 0.14);
+}
+.c-ckolor__overlay input[type=number] {
+  -moz-appearance: textfield;
+}
+.c-ckolor__overlay input[type=number]::-webkit-inner-spin-button, .c-ckolor__overlay input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.c-ckolor__overlay .c-ckolor__swatch {
+  padding: 0;
+  margin: 0px 0px 0px 1px;
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.c-ckolor__overlay .c-ckolor__swatch span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), 0 1px 1px rgba(0, 0, 0, 0.17), 0 7px 21px 1px rgba(0, 0, 0, 0.14);
+  border-radius: 50%;
+}
+.c-ckolor__overlay .c-ckolor__input-wrapper {
+  width: 30%;
+  overflow: hidden;
+  background: 0 0;
+  box-shadow: none;
+  color: #aaa;
+  display: inline-block;
+  padding: 0px;
+}
+.c-ckolor__overlay .c-ckolor__input-wrapper.button {
+  width: auto;
+  vertical-align: middle;
+}
+.c-ckolor__overlay .c-ckolor__input-wrapper.dropdown {
+  width: 53px;
+  overflow: visible;
+  position: relative;
+  vertical-align: middle;
+}
+.c-ckolor__overlay .c-ckolor__input-wrapper.dropdown div {
+  margin-left: 3px;
+}
+.c-ckolor__overlay .c-ckolor__input-wrapper.dropdown div:before {
+  content: "\f0dd";
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  margin: 0px 5px;
+  position: relative;
+  top: -3px;
+}
+.c-ckolor__overlay .c-ckolor__input-wrapper.dropdown ul {
+  margin: 0;
+  padding: 0;
+  display: block;
+  position: absolute;
+  height: auto;
+  overflow: hidden;
+  max-height: 0px;
+  background: rgba(255, 255, 255, 0.77);
+  width: 100%;
+  color: #333;
+  border-radius: 2px;
+  transition: all .2s;
+}
+.c-ckolor__overlay .c-ckolor__input-wrapper.dropdown ul li {
+  display: block;
+  padding: 5px 7px;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+}
+.c-ckolor__overlay .c-ckolor__input-wrapper.dropdown ul li:hover {
+  background: #fff;
+}
+.c-ckolor__overlay .c-ckolor__input-wrapper.dropdown:hover ul {
+  max-height: 140px;
+}
+.c-ckolor__overlay .c-ckolor__input-wrapper.hex {
+  width: 100%;
+}
+.c-ckolor__overlay .c-ckolor__input-wrapper.hex input {
+  text-align: left;
+}
+
+.c-ckolor__overlay-blur, [is-ckoloring="true"] {
+  filter: blur(2px);
+  transition: filter .2s;
+}
+
+.c-ckolor__overlay-inner {
+  width: 280px;
+  position: relative;
+  left: -140px;
+  margin-left: 50%;
+  margin-top: 100px;
+}
+
+.c-ckolor__overlay-inputs {
+  width: 113px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: 2px;
+}
+
+.c-ckolor__saturation {
+  position: relative;
+  width: 100%;
+  height: 21px;
+  border-radius: 50px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), 0 1px 1px rgba(0, 0, 0, 0.17), 0 7px 21px 1px rgba(0, 0, 0, 0.14);
+  cursor: pointer;
+}
+.c-ckolor__saturation:hover .c-ckolor__saturation-handle {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 0 0 1px #fff, inset 0 2px 14px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.25), 0 7px 14px rgba(0, 0, 0, 0.2);
+}
+
+.c-ckolor__saturation-handle {
+  pointer-events: none;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  top: 3px;
+  left: 50%;
+  margin-left: -7px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.79), inset 0 2px 14px rgba(0, 0, 0, 0.22), 0 1px 3px rgba(0, 0, 0, 0.14);
+  transition: transform .2s, background .2s, box-shadow .2s;
+  cursor: pointer;
+  transform: scale(1);
+}
+
+.c-ckolor__swatch {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+
+.c-ckolor__wheel-scoop {
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: red;
+  margin: -11px 0px 0px -11px;
+  border: 2px solid white;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.28), 0px 1px 3px rgba(0, 0, 0, 0.28);
+  transition: transform .2s;
+}
+
+.c-ckolor__wheel {
+  overflow: hidden;
+  position: absolute;
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  max-width: 250px;
+  position: relative;
+  border: 6px solid #fff;
+  box-shadow: 0px 10px 100px rgba(0, 0, 0, 0.66);
+  cursor: pointer;
+  margin-left: 8px;
+  background: #fff;
+  border-radius: 50%;
+}
+.c-ckolor__wheel, .c-ckolor__wheel * {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.c-ckolor__wheel-color {
+  display: block;
+}
+
+.c-ckolor__wheel-color:nth-child(1) {
+  transform: rotate(30deg);
+}
+
+.c-ckolor__wheel-color:nth-child(2) {
+  transform: rotate(60deg);
+}
+
+.c-ckolor__wheel-color:nth-child(3) {
+  transform: rotate(90deg);
+}
+
+.c-ckolor__wheel-color:nth-child(4) {
+  transform: rotate(120deg);
+}
+
+.c-ckolor__wheel-color:nth-child(5) {
+  transform: rotate(150deg);
+}
+
+.c-ckolor__wheel-color:nth-child(6) {
+  transform: rotate(180deg);
+}
+
+.c-ckolor__wheel-color:nth-child(7) {
+  transform: rotate(210deg);
+}
+
+.c-ckolor__wheel-color:nth-child(8) {
+  transform: rotate(240deg);
+}
+
+.c-ckolor__wheel-color:nth-child(9) {
+  transform: rotate(270deg);
+}
+
+.c-ckolor__wheel-color:nth-child(10) {
+  transform: rotate(300deg);
+}
+
+.c-ckolor__wheel-color:nth-child(11) {
+  transform: rotate(330deg);
+}
+
+.c-ckolor__wheel-color:nth-child(12) {
+  transform: rotate(360deg);
+}
+
+.c-ckolor__wheel-color, .c-ckolor__wheel-color-inner1, .c-ckolor__wheel-color-inner2, .c-ckolor__wheel-value {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.c-ckolor__wheel-colors {
+  width: 300px;
+  height: 300px;
+  margin-left: -25px;
+  margin-top: -25px;
+  position: relative;
+  filter: blur(14px);
+  background: #000;
+}
+
+.c-ckolor__wheel-color-inner1 {
+  transform: rotate(60deg) translate(50%, 50%);
+}
+
+.c-ckolor__wheel-color-inner2 {
+  transform: rotate(-60deg) translate(129px, 74px);
+  transform-origin: 0%;
+  background-image: linear-gradient(166deg, #fff 3%, rgba(0, 0, 0, 0.5) 29%);
+  background-blend-mode: hard-light;
+  background-blend-mode: luminosity;
+}
+
+.c-ckolor__wheel-value {
+  box-shadow: inset 0px 0px 3px rgba(255, 255, 255, 0.53), inset 0px 0px 5px 1px rgba(0, 0, 0, 0.12), inset 0px 0px 0px 1px rgba(0, 0, 0, 0.38), 0px 0px 0px 1px #000;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0) 25%), radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 10%), radial-gradient(ellipse at center, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 5%);
+  pointer-events: all;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.c-ckolor__wheel-value:hover .c-ckolor__wheel-scoop {
+  transform: scale(1.1);
+}

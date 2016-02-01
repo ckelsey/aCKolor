@@ -1,0 +1,27 @@
+{
+  "name": "ckc_angularjs_colorpicker",
+  "version": "1.0.0",
+  "homepage": "https://github.com/ckelsey/ckc_angularjs_colorpicker",
+  "authors": [
+    "Chris Kelsey <chris@ckcreates.com>"
+  ],
+  "description": "Angular color picker",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "angular-animate": "latest",
+    "angular-loader": "latest",
+    "angular-mocks": "latest",
+    "angular-resource": "latest",
+    "angular-route": "latest",
+    "angular-sanitize": "latest"
+  }
+}

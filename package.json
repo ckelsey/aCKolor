@@ -1,0 +1,46 @@
+{
+  "name": "ckc_angularjs_colorpicker",
+  "version": "1.0.0",
+  "description": "Angular color picker",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ckelsey/ckc_angularjs_colorpicker.git"
+  },
+  "keywords": [],
+  "author": "Chris Kelsey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ckelsey/ckc_angularjs_colorpicker/issues"
+  },
+  "homepage": "https://github.com/ckelsey/ckc_angularjs_colorpicker/#readme",
+  "dependencies": {
+    "bower": "^*",
+    "gulp": "^*",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-compass": "^*",
+    "gulp-composer": "^*",
+    "gulp-concat": "^*",
+    "gulp-concat-sourcemap": "^*",
+    "gulp-livereload": "^*",
+    "gulp-markdown": "^*",
+    "gulp-minify-css": "^*",
+    "gulp-minify-html": "^*",
+    "gulp-ng-annotate": "^*",
+    "gulp-ng-html2js": "^*",
+    "gulp-notify": "^*",
+    "gulp-plumber": "^*",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^*",
+    "gulp-uglify": "^*",
+    "gulp-uglifyjs": "^*",
+    "gulp-usemin": "^*",
+    "gulp-util": "^*",
+    "lodash": "^3.10.1",
+    "minimize": "^*",
+    "through2": "^*",
+    "vinyl-fs": "^*"
+  },
+  "devDependencies": {
+    "gulp-angular-embed-templates": "^2.0.2"
+  }
+}

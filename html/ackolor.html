@@ -1,0 +1,7 @@
+<div class="c-ckolor__wrapper" id="{{elementId}}">
+    <div class="c-ckolor__input-wrapper" is-ckoloring="{{CKolorFactory.ckoloring}}" ng-click="toggleCKoloring()">
+        <input ng-if="type && model" type="{{type}}" name="{{name}}" id="{{inputId}}" ng-model="model"></input>
+        <span style="background-color: {{model}};" class="c-ckolor__swatch"></span>
+        <span ng-bind="model"></span>
+    </div>
+</div>

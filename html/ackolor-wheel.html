@@ -1,0 +1,85 @@
+<div class="c-ckolor__overlay" ng-show="CKolorFactory.ckoloring">
+    <div class="c-ckolor__overlay-inner">
+
+        <div class="c-ckolor__wheel">
+            <div class="c-ckolor__wheel-colors">
+                <div ng-repeat="hue in CKolorFactory.hues track by $index" class="c-ckolor__wheel-color">
+                    <div class="c-ckolor__wheel-color-inner1">
+                        <div class="c-ckolor__wheel-color-inner2" style="background-color: hsl( {{hue}}, {{CKolorFactory.hsl.s}}%, 50% );"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="c-ckolor__wheel-value" ng-click="CKolorFactory.hueLightFromRadial($event)">
+                <span
+                    class="c-ckolor__wheel-scoop"
+                    style="background: hsl({{CKolorFactory.hsl.h}}, {{CKolorFactory.hsl.s}}%, {{CKolorFactory.hsl.l}}%); left: {{CKolorFactory.radialXY().x}}px; top: {{CKolorFactory.radialXY().y}}px;"
+                ></span>
+            </div>
+
+        </div>
+
+
+
+        <div class="c-ckolor__input-row">
+            <div class="c-ckolor__saturation" style="background: linear-gradient(to right, hsl( {{CKolorFactory.hsl.h}}, 0%, {{CKolorFactory.hsl.l}}% ) 0%, hsl({{CKolorFactory.hsl.h}}, 100%, {{CKolorFactory.hsl.l}}% ) 100%); ">
+                <div class="c-ckolor__saturation-handle" style="left: {{CKolorFactory.hsl.s}}%"></div>
+            </div>
+        </div>
+
+
+        <div class="c-ckolor__input-row">
+            <div class="c-ckolor__swatch">
+                <span style="background: hsl({{CKolorFactory.hsl.h}}, {{CKolorFactory.hsl.s}}%, {{CKolorFactory.hsl.l}}%);"></span>
+            </div>
+            <div class="c-ckolor__input-wrapper dropdown">
+                <div ng-bind="CKolorFactory.display"></div>
+                <ul>
+                    <li ng-click="CKolorFactory.updateColorDisplay('hex')">Hex</li>
+                    <li ng-click="CKolorFactory.updateColorDisplay('rgb')">RGB</li>
+                    <li ng-click="CKolorFactory.updateColorDisplay('hsl')">HSL</li>
+                </ul>
+            </div>
+
+            <div ng-if="CKolorFactory.display === 'hsl'" class="c-ckolor__overlay-inputs">
+                <div class="c-ckolor__input-wrapper">
+                    <input type="number" ng-model="CKolorFactory.inputHsl.h" min="0" max="360">
+                </div>
+                <div class="c-ckolor__input-wrapper">
+                    <input type="number" ng-model="CKolorFactory.inputHsl.s" min="0" max="100">
+                </div>
+                <div class="c-ckolor__input-wrapper">
+                    <input type="number" ng-model="CKolorFactory.inputHsl.l" min="0" max="100">
+                </div>
+            </div>
+
+
+            <div ng-if="CKolorFactory.display === 'rgb'" class="c-ckolor__overlay-inputs">
+                <div class="c-ckolor__input-wrapper">
+                    <input type="number" ng-model="CKolorFactory.rgb.r" ng-change="CKolorFactory.updateRGB()" min="0" max="255">
+                </div>
+                <div class="c-ckolor__input-wrapper">
+                    <input type="number" ng-model="CKolorFactory.rgb.g" ng-change="CKolorFactory.updateRGB()" min="0" max="255">
+                </div>
+                <div class="c-ckolor__input-wrapper">
+                    <input type="number" ng-model="CKolorFactory.rgb.b" ng-change="CKolorFactory.updateRGB()" min="0" max="255">
+                </div>
+            </div>
+
+
+            <div ng-if="CKolorFactory.display === 'hex'" class="c-ckolor__overlay-inputs">
+                <div class="c-ckolor__input-wrapper hex">
+                    <input type="text" ng-model="CKolorFactory.hex" ng-change="CKolorFactory.updateHEX()">
+                </div>
+            </div>
+
+
+            <div class="c-ckolor__input-wrapper button">
+                <button class="c-ckolor__save-btn" ng-click="CKolorFactory.save()"><i class="fa fa-check"></i></button>
+            </div>
+            <div class="c-ckolor__input-wrapper button">
+                <button class="c-ckolor__close-btn" ng-click="CKolorFactory.toggleCKoloring()"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+    </div>
+
+</div>
