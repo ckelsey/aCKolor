@@ -46,172 +46,55 @@ ___
   ``ckoloring : BOOL`` - Flag that determines if the color wheel is open or not.
 
   ``display : STRING`` - Color mode that is displayed, auto selected by model's color mode and changed by the dropdown selection.
-  
+
   ``inputHsl : {h:FLOAT, s:FLOAT, l:FLOAT}`` - HSL number input values - hue, saturation, lightness.
+
+  ``hex : STRING`` - Hex input value.
+
+  ``hsl : {h:FLOAT, s:FLOAT, l:FLOAT}`` - HSL values. The factory converts the model to HSL then sets the other types. Used on the color wheel and saturation slider.
+
+  ``hues : [INT]`` - 12 values of hue degrees used on the color wheel background.
+
+  ``model : SCOPE`` - The given color value.
+
+  ``modelId : STRING`` - The id of the given model. When there are multiple color pickers, this is used by the directives to determine which model is currently being worked on so they aren't all updated.
+
+  ``originalFormat : STRING`` - The original format of the model. HSL, Hex, or RGB.
+
+  ``rgb : {r:INT, g:INT, b:INT}`` - RGB input value. Red, Green, Blue.
+
+  ``circleWidth : INT`` - The width of the color wheel
   <br />
   <br />
-  <br />
-  ``hex : STRING``
-  <br />
-  <br />
-  - Hex input value.
-  <br />
-  <br />
-  <br />
-  ``hsl : {h:FLOAT, s:FLOAT, l:FLOAT}``
-  <br />
-  <br />
-  - HSL values. The factory converts the model to HSL then sets the other types. Used on the color wheel and saturation slider.
-  <br />
-  <br />
-  <br />
-  ``hues : [INT]``
-  <br />
-  <br />
-  - 12 values of hue degrees used on the color wheel background.
-  <br />
-  <br />
-  <br />
-  ``model : SCOPE``
-  <br />
-  <br />
-  - The given color value.
-  <br />
-  <br />
-  <br />
-  ``modelId : STRING``
-  <br />
-  <br />
-  - The id of the given model. When there are multiple color pickers, this is used by the directives to determine which model is currently being worked on so they aren't all updated.
-  <br />
-  <br />
-  <br />
-  ``originalFormat : STRING``
-  <br />
-  <br />
-  - The original format of the model. HSL, Hex, or RGB.
-  <br />
-  <br />
-  <br />
-  ``rgb : {r:INT, g:INT, b:INT}``
-  <br />
-  <br />
-  - RGB input value. Red, Green, Blue.
-  <br />
-  <br />
-  <br />
-  ``circleWidth : INT``
-  <br />
-  <br />
-  - The width of the color wheel
-  <br />
-  <br />
-  <br />
-<br />
+
 ###Methods:###  
 
-  ``init ({"model":SCOPE, "modelId":STRING})``
-  <br />
-  <br />
-  - Called from the input directive to initialize the color wheel with it's values.
-  <br />
-  <br />
-  <br />
-  ``save``
-  <br />
-  <br />
-  - Updates the model and turns the color wheel off.
-  <br />
-  <br />
-  <br />
-  ``toggleCKoloring``
-  <br />
-  <br />
-  - Toggles the color wheel off.
-  <br />
-  <br />
-  <br />
-  ``updateColorDisplay (STRING | 'hex', 'hsl', 'rgb')``
-  <br />
-  <br />
-  - Updates the color wheel display to the given parameter.
-  <br />
-  <br />
-  <br />
-  ``updateHSL``
-  <br />
-  <br />
-  - Convert other color models from the hsl property when this is called.
-  <br />
-  <br />
-  <br />
-  ``updateRGB``
-  <br />
-  <br />
-  - Convert other color models from the rgb property when this is called.
-  <br />
-  <br />
-  <br />
-  ``updateHEX``
-  <br />
-  <br />
-  - Convert other color models from the hex property when this is called.
-  <br />
-  <br />
-  <br />
-  ``hueLightFromRadial (MOUSE EVENT)``
-  <br />
-  <br />
-  - Get HSL from a point on color wheel.
-  <br />
-  <br />
-  <br />
-  ``radialXY``
-  <br />
-  <br />
-  - Set scoop position based on HSL values.
-  <br />
-  <br />
-  <br />
-  ``convertTo``
-  <br />
-  <br />
-  - Convert any color string to HSL and sets the originalFormat property.
-  <br />
-  <br />
-  <br />
-  ``hexToRgb``
-  <br />
-  <br />
-  - Convert hex to rgb.
-  <br />
-  <br />
-  <br />
-  ``rgbToHsl``
-  <br />
-  <br />
-  - Convert rgb to hsl.
-  <br />
-  <br />
-  <br />
-  ``hslToRgb``
-  <br />
-  <br />
-  - Convert hsl to rgb.
-  <br />
-  <br />
-  <br />
-  ``intToHex``
-  <br />
-  <br />
-  - Convert a rgb integer to a hex value.
-  <br />
-  <br />
-  <br />
-  ``rgbToHex``
-  <br />
-  <br />
-  - Convert rgb to hex.
-  <br />
-  <br />
-  <br />
+  ``init ({"model":SCOPE, "modelId":STRING})`` - Called from the input directive to initialize the color wheel with it's values.
+
+  ``save`` - Updates the model and turns the color wheel off.
+
+  ``toggleCKoloring`` - Toggles the color wheel off.
+
+  ``updateColorDisplay (STRING | 'hex', 'hsl', 'rgb')`` - Updates the color wheel display to the given parameter.
+
+  ``updateHSL`` - Convert other color models from the hsl property when this is called.
+
+  ``updateRGB`` - Convert other color models from the rgb property when this is called.
+
+  ``updateHEX`` - Convert other color models from the hex property when this is called.
+
+  ``hueLightFromRadial (MOUSE EVENT)`` - Get HSL from a point on color wheel.
+
+  ``radialXY`` - Set scoop position based on HSL values.
+
+  ``convertTo`` - Convert any color string to HSL and sets the originalFormat property.
+
+  ``hexToRgb`` - Convert hex to rgb.
+
+  ``rgbToHsl`` - Convert rgb to hsl.
+
+  ``hslToRgb`` - Convert hsl to rgb.
+
+  ``intToHex`` - Convert a rgb integer to a hex value.
+
+  ``rgbToHex`` - Convert rgb to hex.
