@@ -39,6 +39,7 @@ ___
   <a-ckolor-wheel></a-ckolor-wheel>
   ```
 
+
 ## Factory
 ####Properties:  
 
@@ -65,7 +66,7 @@ ___
   ``circleWidth : INT`` - The width of the color wheel
 
 
-###Methods:  
+####Methods:  
 
   ``init ({"model":SCOPE, "modelId":STRING})`` - Called from the input directive to initialize the color wheel with it's values.
 
