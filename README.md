@@ -1,6 +1,8 @@
 # aCKolor
 Color picker for angular.
 
+``bower install ackolor``
+
 **Add to your app**  
 
 angular.module('app', ['aCKolor'])
