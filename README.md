@@ -6,7 +6,6 @@ Color picker for angular.
 angular.module('app', ['aCKolor'])
 
 <br />
-<br />
 ## Directives
 
 ### Input
