@@ -18,20 +18,15 @@ Contains an input element that binds, via ngModel, a scope model. It is wrapped 
 ```
 **Attributes**  
 
-  ``model``
-  - Required. The scope model.  
+  ``model`` - Required. The scope model.  
 
-  ``type``
-  - Optional. Set the directive's input type attribute. If omitted, it defaults to hidden.  
+  ``type`` - Optional. Set the directive's input type attribute. If omitted, it defaults to hidden.  
 
-  ``element-id``
-  - Optional. Set the directive's id.  
+  ``element-id`` - Optional. Set the directive's id.  
 
-  ``input-id``
-  - Optional. Set the directive's input id.  
+  ``input-id`` - Optional. Set the directive's input id.  
 
-  ``name``
-  - Optional. Set the directive's input name attribute.
+  ``name`` - Optional. Set the directive's input name attribute.
 
 <br />
 ___
@@ -46,7 +41,7 @@ ___
 <br />
 <br />
 ## Factory
-###Properties:###  
+###Properties:  
 
   ``ckoloring : BOOL``
   <br />
