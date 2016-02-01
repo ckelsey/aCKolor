@@ -28,9 +28,9 @@ Contains an input element that binds, via ngModel, a scope model. It is wrapped 
 
   ``name`` - Optional. Set the directive's input name attribute.
 
-<br />
+
 ___
-<br />
+
 ### Color wheel
   Contains the color wheel markup.
 
@@ -38,8 +38,7 @@ ___
   ```html
   <a-ckolor-wheel></a-ckolor-wheel>
   ```
-<br />
-<br />
+
 ## Factory
 ####Properties:  
 
@@ -64,10 +63,9 @@ ___
   ``rgb : {r:INT, g:INT, b:INT}`` - RGB input value. Red, Green, Blue.
 
   ``circleWidth : INT`` - The width of the color wheel
-  <br />
-  <br />
 
-###Methods:###  
+
+###Methods:  
 
   ``init ({"model":SCOPE, "modelId":STRING})`` - Called from the input directive to initialize the color wheel with it's values.
 
