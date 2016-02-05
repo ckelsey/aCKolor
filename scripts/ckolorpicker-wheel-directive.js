@@ -41,11 +41,11 @@
                 /* On body-> mouseup, clear out mousemove event listeners */
                 var mouseUpped = function(e){
                     wheel.removeEventListener('mousemove', wheelMove, true);
-                    wheel.removeEventListener('touchmove', wheelMove, true);
+                    // wheel.removeEventListener('touchmove', wheelMove, true);
                     saturation.removeEventListener('mousemove', saturationMove, true);
-                    saturation.removeEventListener('touchmove', saturationMove, true);
+                    // saturation.removeEventListener('touchmove', saturationMove, true);
                     body.removeEventListener('mouseup', mouseUpped, true);
-                    body.removeEventListener('touchend', mouseUpped, true);
+                    // body.removeEventListener('touchend', mouseUpped, true);
                 };
 
                 /* On mouse down, add mouse move and up listeners to detect dragging start/end */
@@ -56,9 +56,9 @@
                     wheelMove(e);
                     /* Add mouse move/up event listeners */
                     wheel.addEventListener('mousemove', wheelMove, true);
-                    wheel.addEventListener('touchmove', wheelMove, true);
+                    // wheel.addEventListener('touchmove', wheelMove, true);
                     body.addEventListener('mouseup', mouseUpped, true);
-                    body.addEventListener('touchend', mouseUpped, true);
+                    // body.addEventListener('touchend', mouseUpped, true);
                 };
 
                 /* On mouse down, add mouse move and up listeners to detect dragging start/end */
@@ -69,15 +69,15 @@
                     saturationMove(e);
                     /* Add mouse move/up event listeners */
                     saturation.addEventListener('mousemove', saturationMove, true);
-                    saturation.addEventListener('touchmove', saturationMove, true);
+                    // saturation.addEventListener('touchmove', saturationMove, true);
                     body.addEventListener('mouseup', mouseUpped, true);
-                    body.addEventListener('touchend', mouseUpped, true);
+                    // body.addEventListener('touchend', mouseUpped, true);
                 };
 
                 wheel.addEventListener('mousedown', wheelDown, true);
-                wheel.addEventListener('touchstart', wheelDown, true);
+                // wheel.addEventListener('touchstart', wheelDown, true);
                 saturation.addEventListener('mousedown', saturationDown, true);
-                saturation.addEventListener('touchstart', saturationDown, true);
+                // saturation.addEventListener('touchstart', saturationDown, true);
                 /* End DOM Manipulations */
 
                 /* The width of the color wheel */
