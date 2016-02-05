@@ -29,7 +29,7 @@ a-ckolor-wheel{
         background: transparent;
         border: none;
         -webkit-appearance: none;
-        width: 28px;
+        width: 21px;
         font-size: 18px;
         padding: 0px;
         color: #fff;
@@ -62,7 +62,7 @@ a-ckolor-wheel{
     position: fixed;
     left: 0px;
     top: 0px;
-    background: rgba(0, 0, 0, 0.77);
+    background: radial-gradient(ellipse at 50% 250px, rgba(0,0,0,0.84) 0%,rgba(0,0,0,0.63) 100%);
     z-index: 9999;
 
     input{
@@ -79,6 +79,8 @@ a-ckolor-wheel{
         box-sizing: border-box;
         padding: 0px 3px;
         margin: 0px;
+        width: 100%;
+        border-radius: 2px;
         -webkit-appearance: none;
         outline: none !important;
         transition: all .2s;
@@ -98,8 +100,8 @@ a-ckolor-wheel{
     .c-ckolor__swatch{
         padding: 0;
         margin: 0px 0px 0px 1px;
-        width: 28px;
-        height: 28px;
+        width: 42px;
+        height: 42px;
         display: inline-block;
         vertical-align: middle;
 
@@ -107,19 +109,20 @@ a-ckolor-wheel{
             display: block;
             width: 100%;
             height: 100%;
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,.2),0 1px 1px rgba(0,0,0,.17),0 7px 21px 1px rgba(0,0,0,.14);
+            // box-shadow: inset 0 0 0 1px rgba(255,255,255,.2),0 1px 1px rgba(0,0,0,.17),0 7px 21px 1px rgba(0,0,0,.14);
             border-radius: 50%;
         }
     }
 
     .c-ckolor__input-wrapper{
-        width: 30%;
+        width: 38px;
         overflow: hidden;
         background: 0 0;
         box-shadow: none;
         color: #aaa;
         display: inline-block;
         padding: 0px;
+        margin: 0px 1px;
 
         &.button{
             width: auto;
@@ -200,7 +203,7 @@ a-ckolor-wheel{
 }
 
 .c-ckolor__overlay-inputs{
-    width: 113px;
+    width: 124px;
     display: inline-block;
     vertical-align: middle;
     position: relative;
@@ -212,7 +215,7 @@ a-ckolor-wheel{
     width: 100%;
     height: 21px;
     border-radius: 50px;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.2),0 1px 1px rgba(0,0,0,.17),0 7px 21px 1px rgba(0,0,0,.14);
+    // box-shadow: inset 0 0 0 1px rgba(255,255,255,.2),0 1px 1px rgba(0,0,0,.17),0 7px 21px 1px rgba(0,0,0,.14);
     cursor: pointer;
 
     &:hover{
@@ -259,7 +262,7 @@ a-ckolor-wheel{
     background: red;
     margin: -11px 0px 0px -11px;
     border: 2px solid rgb(255, 255, 255);
-    box-shadow: 0px 1px 0px rgba(0,0,0,.28), 0px 1px 3px rgba(0, 0, 0, 0.28);
+    // box-shadow: 0px 1px 0px rgba(0,0,0,.28), 0px 1px 3px rgba(0, 0, 0, 0.28);
     transition: transform .2s;
 }
 
@@ -272,7 +275,7 @@ a-ckolor-wheel{
   max-width: 250px;
   position: relative;
   border: 6px solid #fff;
-  box-shadow: 0px 10px 100px rgba(0, 0, 0, 0.66);
+  // box-shadow: 0px 10px 100px rgba(0, 0, 0, 0.66);
   cursor: pointer;
   margin-left: 8px;
   background: #fff;
