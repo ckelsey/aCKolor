@@ -68,6 +68,8 @@ ___
 
   ``originalFormat : STRING`` - The original format of the model. HSL, Hex, or RGB.
 
+  ``previousColors : ARRAY`` - Previously selected colors. Stored in localStorage.
+
   ``rgb : {r:INT, g:INT, b:INT}`` - RGB input value. Red, Green, Blue.
 
   ``circleWidth : INT`` - The width of the color wheel
@@ -104,3 +106,5 @@ ___
   ``intToHex`` - Convert a rgb integer to a hex value.
 
   ``rgbToHex`` - Convert rgb to hex.
+
+  ``previousColorClick`` - Sets the color to a previously stored color.

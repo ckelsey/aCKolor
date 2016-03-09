@@ -27,6 +27,7 @@
             model: null,        // The given color value
             modelId: null,      // The id of the given model. When there are multiple colorpickers, this is used by the directives to determine which model is currently being worked on so they aren't all updated
             originalFormat: null, // The original format of the model. HSL, Hex, or RGB
+            previousColors: [], // Previous chosen colors. Global and stored to localStorage
             rgb: {              // RGB input value. Red, Green, Blue
                 r: null,
                 g: null,
@@ -42,6 +43,10 @@
                 self.defaultColor = data.defaultColor ? data.defaultColor : '#FFFFFF';
                 self.model = data.model;
                 self.modelId = data.modelId;
+                var previous = angular.fromJson(localStorage.aCKolorPreviousColors);
+                if(previous){
+                    self.previousColors = previous;
+                }
 
                 /* Convert the color data */
                 var current = self.convertTo(); /* To HSL */
@@ -73,9 +78,30 @@
                         self.model = 'rgba(' + self.rgb.r + ',' + self.rgb.g + ',' + self.rgb.b + ',' + (self.alpha / 100) + ')';
                     }
                 }
-                console.log(self.originalFormat, self.alpha, self.model)
-
+                if(self.previousColors.indexOf(self.model) === -1){
+                    self.previousColors.unshift(self.model);
+                    if(self.previousColors.length > 20){
+                        self.previousColors.length = 20;
+                    }
+                    localStorage.aCKolorPreviousColors = angular.toJson(self.previousColors);
+                }
                 self.toggleCKoloring();
+            },
+
+            previousColorClick: function(color){
+                var originalFormat = self.originalFormat;
+                var current = self.convertTo(color); /* To HSL */
+                if(current){
+                    self.hsl.h = self.inputHsl.h = current.h;
+                    self.hsl.s = self.inputHsl.s = current.s;
+                    self.hsl.l = self.inputHsl.l = current.l;
+                    self.rgb = self.hslToRgb(current);
+                    self.hex = self.rgbToHex(self.rgb);
+
+                    /* Set the display to be original format, ie hex->hex */
+                    self.display = self.originalFormat;
+                }
+                self.updateHSL();
             },
 
             /* Toggles ckoloring off */
@@ -171,7 +197,7 @@
             convertTo: function(str){
                 /* If not supplied, use the given model */
                 str = (!str) ? self.model ? self.model : 'null' : str;
-console.log(str)
+
                 /* If hex */
                 if(str.indexOf('#') > -1){
                     var rgb = self.hexToRgb(str);
