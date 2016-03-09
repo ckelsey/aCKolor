@@ -60,6 +60,7 @@ a-ckolor-wheel {
   left: 0px;
   top: 0px;
   background: radial-gradient(ellipse at 50% 250px, rgba(19, 49, 63, 0.91) 0%, rgba(0, 0, 0, 0.91) 100%);
+  backface-visibility: hidden;
   z-index: 9999;
 }
 .c-ckolor__overlay input {
