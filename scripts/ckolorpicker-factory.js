@@ -8,7 +8,9 @@
 (function(aCKolor) {
     aCKolor.factory('CKolorFactory', function(){
         var self = {
+            alpha: 100,
             ckoloring: false,   // Flag that determines if the color wheel is open or not
+            defaultColor: '#FFFFFF', // If model is null, default to this
             display: 'hex',     // Color mode that is displayed, auto selected by model's color mode and changed by the dropdown selection
             inputHsl: {         // HSL number input values - hue, saturation, lightness
                 h: null,
@@ -34,7 +36,10 @@
 
             /* Called from the input directive to initialize the color wheel with it's values */
             init: function(data){
+                self.alpha = 100;
+
                 /* Given model info */
+                self.defaultColor = data.defaultColor ? data.defaultColor : '#FFFFFF';
                 self.model = data.model;
                 self.modelId = data.modelId;
 
@@ -55,11 +60,21 @@
             /* Updates the model and toggles the ckoloring flag off */
             save: function(){
                 /* convert back to original format */
-                switch(self.originalFormat){
-                    case 'hex': self.model = self.hex; break;
-                    case 'hsl': self.model = 'hsl(' + self.hsl.h + ',' + self.hsl.s + '%,' + self.hsl.l + '%)'; break;
-                    case 'rgb': self.model = 'rgb(' + self.rgb.r + ',' + self.rgb.g + ',' + self.rgb.b + ')'; break;
-                };
+                if(self.alpha === 100){
+                    switch(self.originalFormat){
+                        case 'hex': self.model = self.hex; break;
+                        case 'hsl': self.model = 'hsl(' + self.hsl.h + ',' + self.hsl.s + '%,' + self.hsl.l + '%)'; break;
+                        case 'rgb': self.model = 'rgb(' + self.rgb.r + ',' + self.rgb.g + ',' + self.rgb.b + ')'; break;
+                    };
+                }else{
+                    if(self.originalFormat === 'hsl'){
+                        self.model = 'hsla(' + self.hsl.h + ',' + self.hsl.s + '%,' + self.hsl.l + '%' + ',' + (self.alpha / 100) + ')';
+                    }else{
+                        self.model = 'rgba(' + self.rgb.r + ',' + self.rgb.g + ',' + self.rgb.b + ',' + (self.alpha / 100) + ')';
+                    }
+                }
+                console.log(self.originalFormat, self.alpha, self.model)
+
                 self.toggleCKoloring();
             },
 
@@ -155,8 +170,8 @@
             /* Convert color string to HSL */
             convertTo: function(str){
                 /* If not supplied, use the given model */
-                str = (!str) ? self.model : str;
-
+                str = (!str) ? self.model ? self.model : 'null' : str;
+console.log(str)
                 /* If hex */
                 if(str.indexOf('#') > -1){
                     var rgb = self.hexToRgb(str);
@@ -166,6 +181,20 @@
                 }
 
                 /* If HSL */
+                else if(str.indexOf('hsla') > -1){
+                    str = str.split('(')[1];
+                    str = str.substring(0, str.length - 1);
+                    str = str.split(',');
+                    self.originalFormat = 'hsl';
+                    self.alpha = str[3] * 100;
+                    return {
+                        h: parseInt(str[0]),
+                        s: parseInt(str[1]),
+                        l: parseInt(str[2])
+                    }
+
+                }
+
                 else if(str.indexOf('hsl') > -1){
                     str = str.split('(')[1];
                     str = str.substring(0, str.length - 1);
@@ -180,6 +209,19 @@
                 }
 
                 /* If RGB */
+                else if(str.indexOf('rgba') > -1){
+                    str = str.split('(')[1];
+                    str = str.substring(0, str.length - 1);
+                    str = str.split(',');
+                    self.originalFormat = 'rgb';
+                    self.alpha = str[3] * 100;
+                    return self.rgbToHsl({
+                        r: parseInt(str[0]),
+                        g: parseInt(str[1]),
+                        b: parseInt(str[2])
+                    });
+                }
+
                 else if(str.indexOf('rgb') > -1){
                     str = str.split('(')[1];
                     str = str.substring(0, str.length - 1);
@@ -190,9 +232,19 @@
                         g: parseInt(str[1]),
                         b: parseInt(str[2])
                     });
+                }
 
-                }else{
-                    return false;
+                else if(str.indexOf('transparent') > -1){
+                    self.originalFormat = 'rgb';
+                    self.alpha = 0;
+                    var rgb = self.hexToRgb(self.defaultColor);
+                    return self.rgbToHsl(rgb);
+                }
+
+                else{
+                    self.originalFormat = 'rgb';
+                    var rgb = self.hexToRgb(self.defaultColor);
+                    return self.rgbToHsl(rgb);
                 }
             },
 

@@ -18,8 +18,11 @@
                 var saveBtn = elm[0].querySelector('.c-ckolor__save-btn');
                 var saturation = elm[0].querySelector('.c-ckolor__saturation');
                 var saturationHandle = elm[0].querySelector('.c-ckolor__saturation-handle');
+                var alpha = elm[0].querySelector('.c-ckolor__alpha');
+                var alphaHandle = elm[0].querySelector('.c-ckolor__alpha-handle');
                 var rect = null;
                 var srect = null;
+                var arect = null;
                 /* End DOM Definitions */
 
 
@@ -38,11 +41,21 @@
                     });
                 };
 
+                /* Mouse movement on saturation slider, update alpha */
+                var alphaMove = function(e){
+                    var x = e.pageX - (arect.left);
+                    CKolorFactory.alpha = Math.round((x / arect.width) * 100);
+                    $timeout(function(){
+                        CKolorFactory.updateHSL();
+                    });
+                };
+
                 /* On body-> mouseup, clear out mousemove event listeners */
                 var mouseUpped = function(e){
                     wheel.removeEventListener('mousemove', wheelMove, true);
                     // wheel.removeEventListener('touchmove', wheelMove, true);
                     saturation.removeEventListener('mousemove', saturationMove, true);
+                    alpha.removeEventListener('mousemove', alphaMove, true);
                     // saturation.removeEventListener('touchmove', saturationMove, true);
                     body.removeEventListener('mouseup', mouseUpped, true);
                     // body.removeEventListener('touchend', mouseUpped, true);
@@ -74,10 +87,24 @@
                     // body.addEventListener('touchend', mouseUpped, true);
                 };
 
+                /* On mouse down, add mouse move and up listeners to detect dragging start/end */
+                var alphaDown = function(e){
+                    /* Alpha slider dimensions */
+                    arect = alpha.getBoundingClientRect();
+                    /* Called to update colors if only a click */
+                    alphaMove(e);
+                    /* Add mouse move/up event listeners */
+                    alpha.addEventListener('mousemove', alphaMove, true);
+                    // saturation.addEventListener('touchmove', saturationMove, true);
+                    body.addEventListener('mouseup', mouseUpped, true);
+                    // body.addEventListener('touchend', mouseUpped, true);
+                };
+
                 wheel.addEventListener('mousedown', wheelDown, true);
                 // wheel.addEventListener('touchstart', wheelDown, true);
                 saturation.addEventListener('mousedown', saturationDown, true);
                 // saturation.addEventListener('touchstart', saturationDown, true);
+                alpha.addEventListener('mousedown', alphaDown, true);
                 /* End DOM Manipulations */
 
                 /* The width of the color wheel */

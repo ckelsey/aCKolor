@@ -7,11 +7,12 @@
         return {
             restrict: 'E',
             scope: {
-                elementId: '=', // OPTIONAL: The id of container element
-                inputId: '=',   // OPTIONAL: the id of the input
-                model:'=',      // The model to watch
-                name: '=',      // OPTIONAL: input name
-                type: '='       // Type of input
+                elementId: '=',     // OPTIONAL: The id of container element
+                inputId: '=',       // OPTIONAL: the id of the input
+                model:'=',          // The model to watch
+                name: '=',          // OPTIONAL: input name
+                type: '=',          // Type of input
+                defaultColor: '='   // OPTIONAL: If the model is an invalid color string, use this instead
             },
             templateUrl: '../html/ackolor.html',
             link: function(scope,elm,attrs){
@@ -64,7 +65,8 @@
                     /* Init color wheel */
                     CKolorFactory.init({
                         model: scope.model,
-                        modelId: modelId
+                        modelId: modelId,
+                        defaultColor: scope.defaultColor
                     });
 
                     /* Open color wheel */
