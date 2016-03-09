@@ -48,6 +48,8 @@ ___
 ## Factory
 ####Properties:  
 
+  ``alpha : INT`` - The alpha value of RGB and HSL colors.
+
   ``ckoloring : BOOL`` - Flag that determines if the color wheel is open or not.
 
   ``display : STRING`` - Color mode that is displayed, auto selected by model's color mode and changed by the dropdown selection.
