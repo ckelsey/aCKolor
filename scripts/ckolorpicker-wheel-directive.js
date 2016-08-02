@@ -28,14 +28,32 @@
 
                 /* DOM Manipulations */
                 /* Mouse movement on color wheel, update hue and lightness */
+
                 var wheelMove = function(e){
-                    $timeout(function(){CKolorFactory.hueLightFromRadial(e);});
+					if(!wheel){
+						wheel = elm[0].querySelector('.c-ckolor__wheel-value');
+					}
+
+					if(wheel){
+						$timeout(function(){CKolorFactory.hueLightFromRadial(e, wheel);});
+					}
                 };
+
+				scope.updateHueLightFromRadial = function(e){
+					wheelMove(e);
+				};
 
                 /* Mouse movement on saturation slider, update saturation */
                 var saturationMove = function(e){
                     var x = e.pageX - (srect.left);
-                    CKolorFactory.hsl.s = Math.round((x / srect.width) * 100);
+					var saturationValue = Math.round((x / srect.width) * 100);
+
+					if(saturationValue < 0){
+						saturationValue = 0;
+					}else if(saturationValue > 100){
+						saturationValue = 100;
+					}
+                    CKolorFactory.hsl.s = saturationValue;
                     $timeout(function(){
                         CKolorFactory.updateHSL();
                     });
@@ -44,7 +62,16 @@
                 /* Mouse movement on saturation slider, update alpha */
                 var alphaMove = function(e){
                     var x = e.pageX - (arect.left);
-                    CKolorFactory.alpha = Math.round((x / arect.width) * 100);
+					var alphaValue = Math.round((x / arect.width) * 100);
+
+					if(alphaValue < 0){
+						alphaValue = 0;
+					}else if(alphaValue > 100){
+						alphaValue = 100;
+					}
+
+                    CKolorFactory.alpha = alphaValue;
+
                     $timeout(function(){
                         CKolorFactory.updateHSL();
                     });
@@ -52,13 +79,9 @@
 
                 /* On body-> mouseup, clear out mousemove event listeners */
                 var mouseUpped = function(e){
-                    wheel.removeEventListener('mousemove', wheelMove, true);
-                    // wheel.removeEventListener('touchmove', wheelMove, true);
-                    saturation.removeEventListener('mousemove', saturationMove, true);
-                    alpha.removeEventListener('mousemove', alphaMove, true);
-                    // saturation.removeEventListener('touchmove', saturationMove, true);
-                    body.removeEventListener('mouseup', mouseUpped, true);
-                    // body.removeEventListener('touchend', mouseUpped, true);
+                    body.removeEventListener('mousemove', wheelMove, true);
+                    body.removeEventListener('mousemove', saturationMove, true);
+					body.removeEventListener('mousemove', alphaMove, true);
                 };
 
                 /* On mouse down, add mouse move and up listeners to detect dragging start/end */
@@ -67,11 +90,8 @@
                     rect = wheel.getBoundingClientRect();
                     /* Called to update colors if only a click */
                     wheelMove(e);
-                    /* Add mouse move/up event listeners */
-                    wheel.addEventListener('mousemove', wheelMove, true);
-                    // wheel.addEventListener('touchmove', wheelMove, true);
-                    body.addEventListener('mouseup', mouseUpped, true);
-                    // body.addEventListener('touchend', mouseUpped, true);
+                    /* Add mouse move event listeners */
+                    body.addEventListener('mousemove', wheelMove, true);
                 };
 
                 /* On mouse down, add mouse move and up listeners to detect dragging start/end */
@@ -80,11 +100,8 @@
                     srect = saturation.getBoundingClientRect();
                     /* Called to update colors if only a click */
                     saturationMove(e);
-                    /* Add mouse move/up event listeners */
-                    saturation.addEventListener('mousemove', saturationMove, true);
-                    // saturation.addEventListener('touchmove', saturationMove, true);
-                    body.addEventListener('mouseup', mouseUpped, true);
-                    // body.addEventListener('touchend', mouseUpped, true);
+                    /* Add mouse move event listeners */
+                    body.addEventListener('mousemove', saturationMove, true);
                 };
 
                 /* On mouse down, add mouse move and up listeners to detect dragging start/end */
@@ -93,11 +110,9 @@
                     arect = alpha.getBoundingClientRect();
                     /* Called to update colors if only a click */
                     alphaMove(e);
-                    /* Add mouse move/up event listeners */
-                    alpha.addEventListener('mousemove', alphaMove, true);
-                    // saturation.addEventListener('touchmove', saturationMove, true);
-                    body.addEventListener('mouseup', mouseUpped, true);
-                    // body.addEventListener('touchend', mouseUpped, true);
+                    /* Add mouse move event listeners */
+					//alpha
+                    body.addEventListener('mousemove', alphaMove, true);
                 };
 
                 wheel.addEventListener('mousedown', wheelDown, true);
@@ -105,6 +120,8 @@
                 saturation.addEventListener('mousedown', saturationDown, true);
                 // saturation.addEventListener('touchstart', saturationDown, true);
                 alpha.addEventListener('mousedown', alphaDown, true);
+
+				body.addEventListener('mouseup', mouseUpped, true);
                 /* End DOM Manipulations */
 
                 /* The width of the color wheel */

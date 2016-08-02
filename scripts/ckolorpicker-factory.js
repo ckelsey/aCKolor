@@ -140,9 +140,9 @@
             /* Conversion Utilities */
 
             /* Get HSL from a point on color wheel */
-            hueLightFromRadial: function(e){
+            hueLightFromRadial: function(e, wheel){
                 /* Get color wheel dimensions */
-                var rect = e.target.getBoundingClientRect();
+                var rect = wheel.getBoundingClientRect();
                 var radius = rect.width / 2;
                 var left = rect.left;
                 var top = rect.top;
