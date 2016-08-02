@@ -94,7 +94,7 @@
         </div>
 
         <div class="c-ckolor_previous-color-container" ng-if="CKolorFactory.previousColors.length">
-            <div ng-repeat="previous in CKolorFactory.previousColors track by $index" class="c-ckolor_previous-swatch" ng-class="{background:previous}" ng-click="CKolorFactory.previousColorClick(previous)"></div>
+            <div ng-repeat="previous in CKolorFactory.previousColors track by $index" class="c-ckolor_previous-swatch" ng-style="{background:previous}" ng-click="CKolorFactory.previousColorClick(previous)"></div>
         </div>
     </div>
 
