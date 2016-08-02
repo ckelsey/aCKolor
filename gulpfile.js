@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     ngAnnotate = require('gulp-ng-annotate'),
     minifyHtml = require('gulp-minify-html'),
     embedTemplates = require('gulp-angular-embed-templates'),
+	browserSync = require('browser-sync').create(),
     ngHtml2Js = require('gulp-ng-html2js');
 
 var notifyInfo = {
@@ -26,6 +27,20 @@ var plumberErrorHandler = {
         message: "Error: <%= error.message %>"
     })
 };
+
+
+/* BROWSER SYNC
+ * Starts bower server
+ */
+
+gulp.task('browser-sync', function() {
+	browserSync.init({
+		server: {
+			baseDir: "./"
+		},
+		https: true
+	});
+});
 
 
 
@@ -102,5 +117,6 @@ gulp.task('default', [
     'styles',
     'vendor_scripts',
     'app_scripts',
+	'browser-sync',
     'live'
 ], function() {});
