@@ -5,29 +5,25 @@
             <div class="c-ckolor__wheel-colors">
                 <div ng-repeat="hue in CKolorFactory.hues track by $index" class="c-ckolor__wheel-color">
                     <div class="c-ckolor__wheel-color-inner1">
-                        <div class="c-ckolor__wheel-color-inner2" style="background-color: hsl( {{hue}}, {{CKolorFactory.hsl.s}}%, 50% );"></div>
+                        <div class="c-ckolor__wheel-color-inner2" ng-style="{'background-color':'hsl(' + hue + ',' + CKolorFactory.hsl.s + '%,50%)'}"></div>
                     </div>
                 </div>
             </div>
             <div class="c-ckolor__wheel-value" ng-click="CKolorFactory.hueLightFromRadial($event)">
-                <span
-                    class="c-ckolor__wheel-scoop"
-                    style="background: hsl({{CKolorFactory.hsl.h}}, {{CKolorFactory.hsl.s}}%, {{CKolorFactory.hsl.l}}%); left: {{CKolorFactory.radialXY().x}}px; top: {{CKolorFactory.radialXY().y}}px;"
-                ></span>
+                <span class="c-ckolor__wheel-scoop" ng-style="{left: CKolorFactory.radialXY().x, top: CKolorFactory.radialXY().y, background: 'hsl(' + CKolorFactory.hsl.h + ',' + CKolorFactory.hsl.s + '%,' + CKolorFactory.hsl.l + '%)'}"></span>
             </div>
 
         </div>
 
 
-
         <div class="c-ckolor__input-row">
-            <div class="c-ckolor__saturation" style="background: linear-gradient(to right, hsl( {{CKolorFactory.hsl.h}}, 0%, {{CKolorFactory.hsl.l}}% ) 0%, hsl({{CKolorFactory.hsl.h}}, 100%, {{CKolorFactory.hsl.l}}% ) 100%); ">
+            <div class="c-ckolor__saturation" ng-style="{background: 'linear-gradient(to right, hsl(' + CKolorFactory.hsl.h + ',0%,' + CKolorFactory.hsl.l + '%), hsl(' + CKolorFactory.hsl.h + ',100%,' + CKolorFactory.hsl.l + '%) 100%)'}">
                 <div class="c-ckolor__saturation-handle" style="left: {{CKolorFactory.hsl.s}}%"></div>
             </div>
         </div>
 
         <div class="c-ckolor__input-row c-ckolor__alpha-wrapper">
-            <div class="c-ckolor__alpha" style="background: linear-gradient(to right, rgba( {{CKolorFactory.rgb.r}}, {{CKolorFactory.rgb.g}}, {{CKolorFactory.rgb.b}}, 0 ) 0%, rgba( {{CKolorFactory.rgb.r}}, {{CKolorFactory.rgb.g}}, {{CKolorFactory.rgb.b}}, 1 ) 100%); ">
+            <div class="c-ckolor__alpha" ng-style="{background: 'linear-gradient(to right, rgba(' + CKolorFactory.rgb.r + ',' + CKolorFactory.rgb.g + ',' + CKolorFactory.rgb.b + ', 0), rgba(' + CKolorFactory.rgb.r + ',' + CKolorFactory.rgb.g + ',' + CKolorFactory.rgb.b + ', 1) 100%)'}">
                 <div class="c-ckolor__alpha-handle" style="left: {{CKolorFactory.alpha}}%"></div>
             </div>
         </div>
@@ -35,7 +31,7 @@
 
         <div class="c-ckolor__input-row">
             <div class="c-ckolor__swatch">
-                <span style="background: hsla({{CKolorFactory.hsl.h}}, {{CKolorFactory.hsl.s}}%, {{CKolorFactory.hsl.l}}%, {{CKolorFactory.alpha / 100}});"></span>
+                <span ng-style="{background: 'hsla(' + CKolorFactory.hsl.h + ',' + CKolorFactory.hsl.s + '%,' + CKolorFactory.hsl.l + '%,' + CKolorFactory.alpha / 100 + ')'}"></span>
             </div>
             <div class="c-ckolor__input-wrapper dropdown">
                 <div ng-bind="CKolorFactory.display"></div>
@@ -86,15 +82,19 @@
 
 
             <div class="c-ckolor__input-wrapper button">
-                <button class="c-ckolor__save-btn" ng-click="CKolorFactory.save()"><i class="fa fa-check"></i></button>
+                <button class="c-ckolor__save-btn" ng-click="CKolorFactory.save()">
+                    <i class="fa fa-check"></i>
+                </button>
             </div>
             <div class="c-ckolor__input-wrapper button">
-                <button class="c-ckolor__close-btn" ng-click="CKolorFactory.toggleCKoloring()"><i class="fa fa-times"></i></button>
+                <button class="c-ckolor__close-btn" ng-click="CKolorFactory.toggleCKoloring()">
+                    <i class="fa fa-times"></i>
+                </button>
             </div>
         </div>
 
         <div class="c-ckolor_previous-color-container" ng-if="CKolorFactory.previousColors.length">
-            <div ng-repeat="previous in CKolorFactory.previousColors track by $index" class="c-ckolor_previous-swatch" style="background:{{previous}};" ng-click="CKolorFactory.previousColorClick(previous)"></div>
+            <div ng-repeat="previous in CKolorFactory.previousColors track by $index" class="c-ckolor_previous-swatch" ng-class="{background:previous}" ng-click="CKolorFactory.previousColorClick(previous)"></div>
         </div>
     </div>
 
