@@ -1,18 +1,18 @@
 {
-  "name": "ckc_angularjs_colorpicker",
+  "name": "ackolor",
   "version": "1.0.0",
   "description": "Angular color picker",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ckelsey/ckc_angularjs_colorpicker.git"
+    "url": "git+https://github.com/ckelsey/ackolor.git"
   },
   "keywords": [],
   "author": "Chris Kelsey",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ckelsey/ckc_angularjs_colorpicker/issues"
+    "url": "https://github.com/ckelsey/ackolor/issues"
   },
-  "homepage": "https://github.com/ckelsey/ckc_angularjs_colorpicker/#readme",
+  "homepage": "https://github.com/ckelsey/ackolor/#readme",
   "dependencies": {
     "bower": "^*",
     "gulp": "^*",
