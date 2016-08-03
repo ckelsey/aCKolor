@@ -1,10 +1,3 @@
-// Touch
-// Cross browser
-
-// ngAnnotate
-// ngHtmljs
-
-
 (function(aCKolor) {
     aCKolor.factory('CKolorFactory', function(){
         var self = {
@@ -162,13 +155,16 @@
                     degrees = degrees + 360;
                 }
 
+
+
+
                 /* Lightness */
-                var possibleDistance = Math.sqrt((radius * radius) + (radius * radius)) - 18;
-                var ratio = radius / possibleDistance;
-                var distance = Math.round(Math.sqrt((dx * dx) + (dy * dy)) * ratio);
+				var absoluteX = Math.abs(dx);
+				var absoluteY = Math.abs(dy);
+				var lightness = Math.round(100 - ((Math.sqrt((absoluteX * absoluteX) + (absoluteY * absoluteY)) * 100) / radius));
 
                 /* Set Hue and Lightnes, update other values and scoop positions */
-                self.hsl.l = (Math.round(100 - distance) > -1)? Math.round(100 - distance) : 0;
+            	self.hsl.l = lightness > -1 ? lightness < 101 ? lightness : 100 : 0;
                 self.hsl.h = (Math.round(degrees) > -1 || Math.round(degrees) < 360)? Math.round(degrees) : 0 ;
                 self.updateHSL();
                 self.radialXY();

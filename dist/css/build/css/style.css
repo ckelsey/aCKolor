@@ -274,7 +274,7 @@ a-ckolor-wheel {
   border-radius: 50%;
   background: red;
   margin: -11px 0px 0px -11px;
-  border: 2px solid white;
+  box-shadow: 0px 0px 0px 2px #fff;
   transition: transform .2s;
 }
 
@@ -282,13 +282,13 @@ a-ckolor-wheel {
   overflow: hidden;
   position: absolute;
   border-radius: 50%;
-  width: 250px;
-  height: 250px;
-  max-width: 250px;
+  width: 0px;
+  height: 0px;
+  padding: 50%;
   position: relative;
-  border: 6px solid #fff;
+  box-shadow: 0px 0px 0px 6px #fff;
+  margin-bottom: 28px;
   cursor: pointer;
-  margin-left: 8px;
   background: #fff;
   border-radius: 50%;
 }
@@ -364,13 +364,16 @@ a-ckolor-wheel {
 }
 
 .c-ckolor__wheel-colors {
-  width: 300px;
-  height: 300px;
-  margin-left: -25px;
-  margin-top: -25px;
+  width: 120%;
+  height: 120%;
+  margin-left: -10%;
+  margin-top: -10%;
   position: relative;
   filter: blur(14px);
   background: #000;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
 .c-ckolor__wheel-color-inner1 {

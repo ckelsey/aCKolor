@@ -116,9 +116,7 @@
                 };
 
                 wheel.addEventListener('mousedown', wheelDown, true);
-                // wheel.addEventListener('touchstart', wheelDown, true);
                 saturation.addEventListener('mousedown', saturationDown, true);
-                // saturation.addEventListener('touchstart', saturationDown, true);
                 alpha.addEventListener('mousedown', alphaDown, true);
 
 				body.addEventListener('mouseup', mouseUpped, true);
