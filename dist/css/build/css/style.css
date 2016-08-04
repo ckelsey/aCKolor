@@ -8,6 +8,9 @@ a-ckolor-wheel {
 .c-ckolor__input-row {
   margin: 14px 0px;
 }
+.c-ckolor__input-row.center {
+  text-align: center;
+}
 
 .c-ckolor__input-wrapper {
   width: 200px;
@@ -35,7 +38,7 @@ a-ckolor-wheel {
   color: #fff;
   opacity: .7;
   box-shadow: none;
-  margin: 0px 0px 0px 3px;
+  margin: -4px 0px 0px 0px;
   cursor: pointer;
   transition: all .2s;
 }
@@ -48,11 +51,6 @@ a-ckolor-wheel {
   vertical-align: middle;
 }
 
-.c-ckolor__overlay, .c-ckolor__overlay-unblur {
-  filter: none;
-  transition: filter .2s;
-}
-
 .c-ckolor__overlay {
   width: 100%;
   height: 100%;
@@ -63,7 +61,7 @@ a-ckolor-wheel {
   backface-visibility: hidden;
   z-index: 9999;
 }
-.c-ckolor__overlay input {
+.c-ckolor__overlay input[type="text"], .c-ckolor__overlay input[type="number"] {
   color: #aaa;
   font-size: 12px;
   text-align: center;
@@ -83,33 +81,37 @@ a-ckolor-wheel {
   outline: none !important;
   transition: all .2s;
 }
-.c-ckolor__overlay input:hover, .c-ckolor__overlay input:focus {
+.c-ckolor__overlay input[type="text"]:hover, .c-ckolor__overlay input[type="text"]:focus, .c-ckolor__overlay input[type="number"]:hover, .c-ckolor__overlay input[type="number"]:focus {
   background: rgba(255, 255, 255, 0.14);
 }
-.c-ckolor__overlay input[type=number] {
+.c-ckolor__overlay input[type="text"][type=number], .c-ckolor__overlay input[type="number"][type=number] {
   -moz-appearance: textfield;
 }
-.c-ckolor__overlay input[type=number]::-webkit-inner-spin-button, .c-ckolor__overlay input[type=number]::-webkit-outer-spin-button {
+.c-ckolor__overlay input[type="text"][type=number]::-webkit-inner-spin-button, .c-ckolor__overlay input[type="text"][type=number]::-webkit-outer-spin-button, .c-ckolor__overlay input[type="number"][type=number]::-webkit-inner-spin-button, .c-ckolor__overlay input[type="number"][type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 .c-ckolor__overlay .c-ckolor__swatch {
-  padding: 0;
-  margin: 0px 0px 0px 1px;
-  width: 42px;
-  height: 42px;
+  margin: 0 0 0 1px;
+  width: 0px;
+  height: 0px;
   display: inline-block;
   vertical-align: middle;
+  padding: 18px;
+  position: relative;
 }
 .c-ckolor__overlay .c-ckolor__swatch span {
   display: block;
   width: 100%;
   height: 100%;
-  box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.07), 0px 1px 0px 1px rgba(0, 0, 0, 0.07);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07), 0 1px 0 1px rgba(0, 0, 0, 0.07);
   border-radius: 50%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 .c-ckolor__overlay .c-ckolor__input-wrapper {
-  width: 38px;
+  width: 30%;
   overflow: hidden;
   background: 0 0;
   box-shadow: none;
@@ -117,19 +119,23 @@ a-ckolor-wheel {
   display: inline-block;
   padding: 0px;
   margin: 0px 1px;
+  line-height: 14px;
 }
 .c-ckolor__overlay .c-ckolor__input-wrapper.smaller {
   width: 30px;
 }
 .c-ckolor__overlay .c-ckolor__input-wrapper.button {
-  width: auto;
+  width: 9%;
   vertical-align: middle;
+  margin: 0px 0px 0px 2px;
 }
 .c-ckolor__overlay .c-ckolor__input-wrapper.dropdown {
-  width: 53px;
+  width: 20%;
   overflow: visible;
   position: relative;
   vertical-align: middle;
+  text-align: center;
+  font-size: 12px;
 }
 .c-ckolor__overlay .c-ckolor__input-wrapper.dropdown div {
   margin-left: 3px;
@@ -138,7 +144,7 @@ a-ckolor-wheel {
   content: "\f0dd";
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
-  margin: 0px 5px;
+  margin: 0px 3px 0px 0px;
   position: relative;
   top: -3px;
 }
@@ -175,7 +181,7 @@ a-ckolor-wheel {
 }
 
 .c-ckolor_previous-color-container {
-  margin: 42px auto 14px;
+  margin: 28px auto 14px;
   box-sizing: border-box;
   padding: 28px 7px 0px;
   box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.05), 0px -1px 0px rgba(0, 0, 0, 0.2);
@@ -196,21 +202,26 @@ a-ckolor-wheel {
   transform: scale(1.1);
 }
 
-.c-ckolor__overlay-blur, [is-ckoloring="true"] {
-  filter: blur(2px);
+.c-ckolor__overlay-blur > * {
+  filter: blur(3px);
   transition: filter .2s;
+}
+
+.c-ckolor__overlay-inner-outer {
+  position: relative;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
 }
 
 .c-ckolor__overlay-inner {
   width: 280px;
   position: relative;
-  left: -140px;
-  margin-left: 50%;
-  margin-top: 100px;
+  margin: 35px auto 20px;
 }
 
 .c-ckolor__overlay-inputs {
-  width: 129px;
+  width: 40%;
   display: inline-block;
   vertical-align: middle;
   position: relative;
@@ -291,6 +302,7 @@ a-ckolor-wheel {
   cursor: pointer;
   background: #fff;
   border-radius: 50%;
+  z-index: 0;
 }
 .c-ckolor__wheel, .c-ckolor__wheel * {
   user-drag: none;
@@ -306,54 +318,154 @@ a-ckolor-wheel {
 }
 
 .c-ckolor__wheel-color:nth-child(1) {
-  transform: rotate(30deg);
+  transform: rotate(10deg);
 }
 
 .c-ckolor__wheel-color:nth-child(2) {
-  transform: rotate(60deg);
+  transform: rotate(20deg);
 }
 
 .c-ckolor__wheel-color:nth-child(3) {
-  transform: rotate(90deg);
+  transform: rotate(30deg);
 }
 
 .c-ckolor__wheel-color:nth-child(4) {
-  transform: rotate(120deg);
+  transform: rotate(40deg);
 }
 
 .c-ckolor__wheel-color:nth-child(5) {
-  transform: rotate(150deg);
+  transform: rotate(50deg);
 }
 
 .c-ckolor__wheel-color:nth-child(6) {
-  transform: rotate(180deg);
+  transform: rotate(60deg);
 }
 
 .c-ckolor__wheel-color:nth-child(7) {
-  transform: rotate(210deg);
+  transform: rotate(70deg);
 }
 
 .c-ckolor__wheel-color:nth-child(8) {
-  transform: rotate(240deg);
+  transform: rotate(80deg);
 }
 
 .c-ckolor__wheel-color:nth-child(9) {
-  transform: rotate(270deg);
+  transform: rotate(90deg);
 }
 
 .c-ckolor__wheel-color:nth-child(10) {
-  transform: rotate(300deg);
+  transform: rotate(100deg);
 }
 
 .c-ckolor__wheel-color:nth-child(11) {
-  transform: rotate(330deg);
+  transform: rotate(110deg);
 }
 
 .c-ckolor__wheel-color:nth-child(12) {
+  transform: rotate(120deg);
+}
+
+.c-ckolor__wheel-color:nth-child(13) {
+  transform: rotate(130deg);
+}
+
+.c-ckolor__wheel-color:nth-child(14) {
+  transform: rotate(140deg);
+}
+
+.c-ckolor__wheel-color:nth-child(15) {
+  transform: rotate(150deg);
+}
+
+.c-ckolor__wheel-color:nth-child(16) {
+  transform: rotate(160deg);
+}
+
+.c-ckolor__wheel-color:nth-child(17) {
+  transform: rotate(170deg);
+}
+
+.c-ckolor__wheel-color:nth-child(18) {
+  transform: rotate(180deg);
+}
+
+.c-ckolor__wheel-color:nth-child(19) {
+  transform: rotate(190deg);
+}
+
+.c-ckolor__wheel-color:nth-child(20) {
+  transform: rotate(200deg);
+}
+
+.c-ckolor__wheel-color:nth-child(21) {
+  transform: rotate(210deg);
+}
+
+.c-ckolor__wheel-color:nth-child(22) {
+  transform: rotate(220deg);
+}
+
+.c-ckolor__wheel-color:nth-child(23) {
+  transform: rotate(230deg);
+}
+
+.c-ckolor__wheel-color:nth-child(24) {
+  transform: rotate(240deg);
+}
+
+.c-ckolor__wheel-color:nth-child(25) {
+  transform: rotate(250deg);
+}
+
+.c-ckolor__wheel-color:nth-child(26) {
+  transform: rotate(260deg);
+}
+
+.c-ckolor__wheel-color:nth-child(27) {
+  transform: rotate(270deg);
+}
+
+.c-ckolor__wheel-color:nth-child(28) {
+  transform: rotate(280deg);
+}
+
+.c-ckolor__wheel-color:nth-child(29) {
+  transform: rotate(290deg);
+}
+
+.c-ckolor__wheel-color:nth-child(30) {
+  transform: rotate(300deg);
+}
+
+.c-ckolor__wheel-color:nth-child(31) {
+  transform: rotate(310deg);
+}
+
+.c-ckolor__wheel-color:nth-child(32) {
+  transform: rotate(320deg);
+}
+
+.c-ckolor__wheel-color:nth-child(33) {
+  transform: rotate(330deg);
+}
+
+.c-ckolor__wheel-color:nth-child(34) {
+  transform: rotate(340deg);
+}
+
+.c-ckolor__wheel-color:nth-child(35) {
+  transform: rotate(350deg);
+}
+
+.c-ckolor__wheel-color:nth-child(36) {
   transform: rotate(360deg);
 }
 
-.c-ckolor__wheel-color, .c-ckolor__wheel-color-inner1, .c-ckolor__wheel-color-inner2, .c-ckolor__wheel-value {
+.c-ckolor__wheel-color:nth-child(37) {
+  transform: rotate(370deg);
+}
+
+.c-ckolor__wheel-color, .c-ckolor__wheel-color-inner1, .c-ckolor__wheel-color-inner2, .c-ckolor__wheel-color-inner2-2, .c-ckolor__wheel-value {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -381,16 +493,14 @@ a-ckolor-wheel {
 }
 
 .c-ckolor__wheel-color-inner2 {
-  transform: rotate(-60deg) translate(129px, 74px);
+  transform: rotate(-79deg) translate(49%, 26%);
   transform-origin: 0%;
-  background-image: linear-gradient(166deg, #fff 3%, rgba(0, 0, 0, 0.5) 29%);
-  background-blend-mode: hard-light;
-  background-blend-mode: luminosity;
+  background-image: linear-gradient(177deg, transparent 30%, rgba(0, 0, 0, 0.35) 38%, rgba(0, 0, 0, 0.5) 42%, rgba(0, 0, 0, 0.9) 55%), linear-gradient(177deg, rgba(255, 255, 255, 0.9) 13%, rgba(255, 255, 255, 0) 30%);
 }
 
 .c-ckolor__wheel-value {
   box-shadow: inset 0px 0px 3px rgba(255, 255, 255, 0.53), inset 0px 0px 5px 1px rgba(0, 0, 0, 0.12), inset 0px 0px 0px 1px rgba(0, 0, 0, 0.38), 0px 0px 0px 1px #000;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0) 25%), radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 10%), radial-gradient(ellipse at center, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 5%);
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 18%), radial-gradient(ellipse at center, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 11%), radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 6%), radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 3%);
   pointer-events: all;
   border-radius: 50%;
   overflow: hidden;

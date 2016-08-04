@@ -1,0 +1,102 @@
+<div class="c-ckolor__overlay" ng-show="CKolorFactory.ckoloring">
+	<div class="c-ckolor__overlay-inner-outer">
+		<div class="c-ckolor__overlay-inner">
+
+			<div class="c-ckolor__wheel">
+				<div class="c-ckolor__wheel-colors">
+					<div ng-repeat="hue in CKolorFactory.hues track by $index" class="c-ckolor__wheel-color">
+						<div class="c-ckolor__wheel-color-inner1">
+							<div class="c-ckolor__wheel-color-inner2" ng-style="{'background-color':'hsl(' + hue + ',' + CKolorFactory.hsl.s + '%,50%)'}"></div>
+						</div>
+					</div>
+				</div>
+				<div class="c-ckolor__wheel-value" ng-click="updateHueLightFromRadial($event)">
+					<span class="c-ckolor__wheel-scoop" ng-style="{left: CKolorFactory.radialXY().x + 'px', top: CKolorFactory.radialXY().y + 'px', background: 'hsl(' + CKolorFactory.hsl.h + ',' + CKolorFactory.hsl.s + '%,' + CKolorFactory.hsl.l + '%)'}"></span>
+				</div>
+
+			</div>
+
+
+			<div class="c-ckolor__input-row">
+				<div class="c-ckolor__saturation" ng-style="{background: 'linear-gradient(to right, hsl(' + CKolorFactory.hsl.h + ',0%,' + CKolorFactory.hsl.l + '%), hsl(' + CKolorFactory.hsl.h + ',100%,' + CKolorFactory.hsl.l + '%) 100%)'}">
+					<div class="c-ckolor__saturation-handle" style="left: {{CKolorFactory.hsl.s}}%"></div>
+				</div>
+			</div>
+
+			<div class="c-ckolor__input-row c-ckolor__alpha-wrapper">
+				<div class="c-ckolor__alpha" ng-style="{background: 'linear-gradient(to right, rgba(' + CKolorFactory.rgb.r + ',' + CKolorFactory.rgb.g + ',' + CKolorFactory.rgb.b + ', 0), rgba(' + CKolorFactory.rgb.r + ',' + CKolorFactory.rgb.g + ',' + CKolorFactory.rgb.b + ', 1) 100%)'}">
+					<div class="c-ckolor__alpha-handle" style="left: {{CKolorFactory.alpha}}%"></div>
+				</div>
+			</div>
+
+
+			<div class="c-ckolor__input-row center">
+				<div class="c-ckolor__swatch">
+					<span ng-style="{background: 'hsla(' + CKolorFactory.hsl.h + ',' + CKolorFactory.hsl.s + '%,' + CKolorFactory.hsl.l + '%,' + CKolorFactory.alpha / 100 + ')'}"></span>
+				</div>
+				<div class="c-ckolor__input-wrapper dropdown">
+					<div ng-bind="CKolorFactory.display"></div>
+					<ul>
+						<li ng-click="CKolorFactory.updateColorDisplay('hex')">Hex</li>
+						<li ng-click="CKolorFactory.updateColorDisplay('rgb')">RGB</li>
+						<li ng-click="CKolorFactory.updateColorDisplay('hsl')">HSL</li>
+					</ul>
+				</div>
+
+				<div ng-if="CKolorFactory.display === 'hsl'" class="c-ckolor__overlay-inputs">
+					<div class="c-ckolor__input-wrapper" ng-class="CKolorFactory.alpha === 100 ? '' : 'smaller'">
+						<input type="number" ng-model="CKolorFactory.inputHsl.h" min="0" max="360">
+					</div>
+					<div class="c-ckolor__input-wrapper" ng-class="CKolorFactory.alpha === 100 ? '' : 'smaller'">
+						<input type="number" ng-model="CKolorFactory.inputHsl.s" min="0" max="100">
+					</div>
+					<div class="c-ckolor__input-wrapper" ng-class="CKolorFactory.alpha === 100 ? '' : 'smaller'">
+						<input type="number" ng-model="CKolorFactory.inputHsl.l" min="0" max="100">
+					</div>
+					<div class="c-ckolor__input-wrapper smaller" ng-if="CKolorFactory.alpha !== 100">
+						<input type="number" ng-model="CKolorFactory.alpha" min="0" max="100">
+					</div>
+				</div>
+
+
+				<div ng-if="CKolorFactory.display === 'rgb'" class="c-ckolor__overlay-inputs">
+					<div class="c-ckolor__input-wrapper" ng-class="CKolorFactory.alpha === 100 ? '' : 'smaller'">
+						<input type="number" ng-model="CKolorFactory.rgb.r" ng-change="CKolorFactory.updateRGB()" min="0" max="255">
+					</div>
+					<div class="c-ckolor__input-wrapper" ng-class="CKolorFactory.alpha === 100 ? '' : 'smaller'">
+						<input type="number" ng-model="CKolorFactory.rgb.g" ng-change="CKolorFactory.updateRGB()" min="0" max="255">
+					</div>
+					<div class="c-ckolor__input-wrapper" ng-class="CKolorFactory.alpha === 100 ? '' : 'smaller'">
+						<input type="number" ng-model="CKolorFactory.rgb.b" ng-change="CKolorFactory.updateRGB()" min="0" max="255">
+					</div>
+					<div class="c-ckolor__input-wrapper smaller" ng-if="CKolorFactory.alpha !== 100">
+						<input type="number" ng-model="CKolorFactory.alpha" min="0" max="100">
+					</div>
+				</div>
+
+
+				<div ng-if="CKolorFactory.display === 'hex'" class="c-ckolor__overlay-inputs">
+					<div class="c-ckolor__input-wrapper hex">
+						<input type="text" ng-model="CKolorFactory.hex" ng-change="CKolorFactory.updateHEX()">
+					</div>
+				</div>
+
+
+				<div class="c-ckolor__input-wrapper button">
+					<button class="c-ckolor__save-btn" ng-click="CKolorFactory.save()">
+						<i class="fa fa-check"></i>
+					</button>
+				</div>
+				<div class="c-ckolor__input-wrapper button">
+					<button class="c-ckolor__close-btn" ng-click="CKolorFactory.toggleCKoloring()">
+						<i class="fa fa-times"></i>
+					</button>
+				</div>
+			</div>
+
+			<div class="c-ckolor_previous-color-container" ng-if="CKolorFactory.previousColors.length">
+				<div ng-repeat="previous in CKolorFactory.previousColors track by $index" class="c-ckolor_previous-swatch" ng-style="{background:previous}" ng-click="CKolorFactory.previousColorClick(previous)"></div>
+			</div>
+		</div>
+	</div>
+</div>

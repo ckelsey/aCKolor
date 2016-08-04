@@ -1,3 +1,8 @@
-.sass-cache
+npm-debug.log
+.sass-cache/
 node_modules/
 bower_components/
+.DS_Store
+404.html
+index.html
+aws-config.json

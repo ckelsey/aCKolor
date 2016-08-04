@@ -1,47 +1,51 @@
 {
-  "name": "ackolor",
-  "version": "1.2.0",
-  "description": "Angular color picker",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ckelsey/ackolor.git"
-  },
-  "keywords": [],
-  "author": "Chris Kelsey",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ckelsey/ackolor/issues"
-  },
-  "homepage": "https://github.com/ckelsey/ackolor/#readme",
-  "dependencies": {
-    "bower": "^*",
-    "gulp": "^*",
-    "gulp-autoprefixer": "^3.0.2",
-    "gulp-compass": "^*",
-    "gulp-composer": "^*",
-    "gulp-concat": "^*",
-    "gulp-concat-sourcemap": "^*",
-    "gulp-livereload": "^*",
-    "gulp-markdown": "^*",
-    "gulp-minify-css": "^*",
-    "gulp-minify-html": "^*",
-    "gulp-ng-annotate": "^*",
-    "gulp-ng-html2js": "^*",
-    "gulp-notify": "^*",
-    "gulp-plumber": "^*",
-    "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^*",
-    "gulp-uglify": "^*",
-    "gulp-uglifyjs": "^*",
-    "gulp-usemin": "^*",
-    "gulp-util": "^*",
-    "lodash": "^3.10.1",
-    "minimize": "^*",
-    "through2": "^*",
-    "vinyl-fs": "^*",
-	"browser-sync": "^*"
-  },
-  "devDependencies": {
-    "gulp-angular-embed-templates": "^2.0.2"
-  }
+	"name": "aCKolor",
+	"version": "2.0.0",
+	"description": "Angular color picker",
+	"keywords": [
+		"Angular",
+		"color",
+		"color picker"
+	],
+	"author": "Chris Kelsey",
+	"license": "MIT",
+	"homepage": "https://github.com/ckelsey/aCKolor",
+	"dependencies": {
+		"bower": "^*",
+		"browser-sync": "^*",
+		"fs": "^*",
+		"gulp": "^*",
+		"gulp-angular-embed-templates": "^*",
+		"gulp-autoprefixer": "^*",
+		"gulp-awspublish": "^*",
+		"gulp-clean-css": "^*",
+		"gulp-cloudfront-invalidate-aws-publish": "^*",
+		"gulp-compass": "^*",
+		"gulp-concat": "^*",
+		"gulp-jshint": "^*",
+		"gulp-livereload": "^*",
+		"gulp-ng-annotate": "^*",
+		"gulp-notify": "^*",
+		"gulp-plumber": "^*",
+		"gulp-rename": "^*",
+		"gulp-sourcemaps": "^*",
+		"gulp-to-markdown": "^*",
+		"gulp-uglify": "^*",
+		"jshint": "^*",
+		"q": "^*",
+		"run-sequence": "^*"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"bower": "gulp bower",
+		"postinstall": "gulp install && bower install && gulp"
+	},
+	"bower": {
+		"angular": "latest",
+		"angular-loader": "latest",
+		"angular-resource": "latest",
+		"angular-route": "latest",
+		"angular-sanitize": "latest",
+		"font-awesome": "latest"
+	}
 }

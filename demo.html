@@ -1,5 +1,131 @@
-<a-ckolor type="'hidden'" name="'color-input'" model="app.color" element-id="'an_id'" input-id="'inputs'" default-color="'#333333'"></a-ckolor>
+<div ng-controller="AppCtlr as app" class="demo">
+	<h1>aCKolor</h1>
+	<p>Angular color picker that accepts/stores rgb, rgba, hex, hsl, and transparent color values. Click on the inputs below to try.</p>
+	<div style="padding: 0px 35px;">
+		<a-ckolor type="app.type" name="app.name" model="app.color" element-id="app.id" input-id="app.inputId" default-color="app.defaultColor" blur="app.blur"></a-ckolor>
+		<!--
+		<a-ckolor type="'hidden'" name="'color-input2'" model="app.color2" element-id="'an_id2'" input-id="'inputs2'"></a-ckolor>
+		<a-ckolor type="'hidden'" name="'color-input3'" model="app.color3" element-id="'an_id3'" input-id="'inputs3'"></a-ckolor>
+		<a-ckolor type="'hidden'" name="'color-input4'" model="app.color4" element-id="'an_id4'" input-id="'inputs4'"></a-ckolor>
+		<a-ckolor type="'hidden'" name="'color-input5'" model="app.color5" element-id="'an_id5'" input-id="'inputs5'"></a-ckolor>
+		<a-ckolor type="'hidden'" name="'color-input6'" model="app.color6" element-id="'an_id6'" input-id="'inputs6'"></a-ckolor>
+		-->
+	</div>
 
-<a-ckolor type="'hidden'" name="'color-input2'" model="app.color2" element-id="'an_id2'" input-id="'inputs2'" default-color="'#a10005'"></a-ckolor>
+	<h3>Attributes</h3>
 
-<a-ckolor-wheel theme="2"></a-ckolor-wheel>
+	<div style="padding: 0px 35px;">
+		<label>Color</label>
+		<input type="text" ng-model="app.color"/>
+	</div>
+
+	<div style="padding: 0px 35px;">
+		<label>Default color</label>
+		<input type="text" ng-model="app.defaultColor"/>
+	</div>
+
+	<div style="padding: 0px 35px;">
+		<label>Blur</label>
+		<input type="checkbox" ng-model="app.blur"/>
+	</div>
+
+	<div style="padding: 0px 35px;">
+		<label>Id</label>
+		<input type="text" ng-model="app.id"/>
+	</div>
+
+	<div style="padding: 0px 35px;">
+		<label>Name</label>
+		<input type="text" ng-model="app.name"/>
+	</div>
+
+	<div style="padding: 0px 35px;">
+		<label>Type</label>
+		<input type="text" ng-model="app.type"/>
+	</div>
+
+	<div style="padding: 0px 35px;">
+		<label>Width <i>(scope on style tag)</i></label>
+		<input type="text" ng-model="app.width"/>
+	</div>
+
+	<style>
+	.c-ckolor__overlay-inner{
+		width: {{app.width}}px;
+	}
+	</style>
+</div>
+
+<style>
+html {
+	background: #f1f2f3;
+	color: #333;
+	font-size: 14px;
+	line-height: 28px;
+}
+
+body{
+	font-family: sans-serif;
+	margin: 0px;
+}
+
+
+h1,h2,h3{
+	color: #068aa2;
+	margin: 21px 35px;
+}
+
+h3{
+	margin: 35px 35px 0px;
+}
+
+p{
+	padding: 0px 35px;
+}
+
+hr{
+	display: none;
+}
+
+
+.section{
+	padding: 0px 21px;
+	margin: 35px 0px;
+}
+
+code{
+	color: #c10005;
+	padding: 3px 7px;
+	background: rgba(176, 196, 208, 0.24);
+	border-radius: 2px;
+	box-shadow: inset 0px 0px 1px rgba(0, 0, 0, 0.1);
+	white-space: nowrap;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+label{
+	font-weight: bold;
+}
+
+input[type="text"]{
+	display: block;
+	border: none;
+	width: 125px;
+	height: 21px;
+	line-height: 21px;
+	padding: 4px 7px;
+	background: #fff;
+	box-shadow: 0 1px 3px rgba(0,0,0,.14),0 3px 10px rgba(0,0,0,.035);
+	border-radius: 2px;
+	margin: 0px 0 7px;
+	font-size: 12px;
+	color: #555;
+	font-family: sans-serif;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+</style>
