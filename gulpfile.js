@@ -118,6 +118,8 @@ gulp.task('index', function() {
 	"\t" + '<meta http-equiv="X-UA-Compatible" content="IE=edge">' + "\r" +
 	"\t" + '<meta name="description" content="">' + "\r" +
 	"\t" + '<meta name="viewport" content="width=device-width">' + "\r" +
+	"\t" + '<link rel="icon" type="image/png" href="./favicon.png">' + "\r" +
+	"\t" + '<link rel="stylesheet" href="/demo/style.css">' + "\r" +
 	"\t" + '<link rel="stylesheet" href="/dist/css/' + appName + '_vendor.min.css">' + "\r" +
 	"\t" + '<link rel="stylesheet" href="/dist/css/' + appName + '.min.css">' + "\r" +
 	"\t" + '<base href="/" />' + "\r" +
@@ -126,7 +128,13 @@ gulp.task('index', function() {
 	"\t" + '<navigation></navigation>' + "\r" +
 	"\t" + '<div ng-view=""></div>' + "\r" +
 	"\t" + '<script src="/dist/js/' + appName + '_vendor.min.js"></script>' + "\r" +
-	"\t" + '<script src="/app.js"></script>' + "\r" +
+	"\t" + '<script src="/demo/app.js"></script>' + "\r" +
+	"\t" + '<script src="/demo/demo-compile.js"></script>' + "\r" +
+	"\t" + '<script src="/demo/demo-date-string.js"></script>' + "\r" +
+	"\t" + '<script src="/demo/demo-input.js"></script>' + "\r" +
+	"\t" + '<script src="/demo/demo-json-text.js"></script>' + "\r" +
+	"\t" + '<script src="/demo/do-cks.js"></script>' + "\r" +
+	"\t" + '<script src="/demo/demo-toggle-parent.js"></script>' + "\r" +
 	"\t" + '<script src="/dist/js/' + appName + '.min.js"></script>' + "\r" +
 	'</body>' + "\r" +
 	'</html>';
@@ -326,18 +334,14 @@ var localConfig = {
 
 
 var buildFiles = [
-	'lib/bower_components/font-awesome/css/font-awesome.min.css',
-	'lib/bower_components/font-awesome/css/font-awesome.css.map',
-	'lib/bower_components/font-awesome/fonts/*.*',
 	'dist/css/'+ appName +'_vendor.min.css',
+	'dist/fonts/*.*',
 	'dist/css/'+ appName +'.min.css',
 	'dist/js/'+ appName +'_vendor.min.js',
 	'dist/js/'+ appName +'.min.js',
 	'dist/js/'+ appName +'.min.js.map',
-	'dist/js/utility.min.js.map',
+	'demo/*.*',
 	'favicon.png',
-	'app.js',
-	'demo.html',
 	'index.html'
 ];
 

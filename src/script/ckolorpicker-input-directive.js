@@ -16,9 +16,7 @@
 				blur: '='   		// OPTIONAL: Enable or disable the css blur filter behind the overlay. Enabled by default
             },
             templateUrl: '../html/ackolor.html',
-            link: function(scope,elm,attrs){
-
-				console.log(scope);
+            link: function(scope,elm){
 
                 var makeid = function(){
                     var text = "";

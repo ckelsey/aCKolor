@@ -6,7 +6,7 @@
         return {
             restrict: 'E',
             templateUrl: '../html/ackolor-wheel.html',
-            link: function(scope,elm,attrs){
+            link: function(scope,elm){
                 scope.CKolorFactory = CKolorFactory;
 
                 /* DOM Definitions */

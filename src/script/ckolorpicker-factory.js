@@ -33,7 +33,7 @@
 				self.alpha = 100;
 
 				/* Given model info */
-				self.defaultColor = data.defaultColor ? data.defaultColor : '#FFFFFF';
+				self.defaultColor = data.defaultColor ? self.validHex(data.defaultColor) : '#FFFFFF';
 				self.model = data.model;
 				self.modelId = data.modelId;
 				var previous = angular.fromJson(localStorage.aCKolorPreviousColors);
@@ -124,11 +124,29 @@
 			/* Convert other color models when this is called */
 			updateHEX: function(){
 				/* Make sure it's a valid hex string */
+				self.hex = self.validHex(self.hex);
+
 				var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(self.hex);
-				if(self.hex && self.hex.length == 7 && result){
+				if(self.hex && self.hex.length === 7 && result){
 					self.rgb = self.hexToRgb(self.hex);
 					self.hsl = self.rgbToHsl(self.rgb);
 				}
+			},
+
+			validHex: function(data){
+				var chars = data.split('');
+
+				if(chars[0] === '#'){
+					chars.shift();
+				}
+
+				if(chars.length === 3){
+					chars = chars.concat(chars);
+				}
+
+				data = '#' + chars.join('');
+
+				return data;
 			},
 
 			/* Conversion Utilities */
@@ -199,6 +217,7 @@
 
 				/* If hex */
 				if(str.indexOf('#') > -1){
+					str = self.validHex(str);
 					rgb = self.hexToRgb(str);
 					self.originalFormat = 'hex';
 					return self.rgbToHsl(rgb);
