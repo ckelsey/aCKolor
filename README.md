@@ -12,7 +12,7 @@ Angular color picker that accepts/stores rgb, rgba, hex, hsl, and transparent co
 
 `angular.module('app’, ['aCKolor’])`
 
-[Live demo](http://ackolor/cklsylabs.com/)
+[Live demo](http://ackolor.cklsylabs.com/)
 
 ## Directives
 
