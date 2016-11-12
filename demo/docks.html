@@ -1,0 +1,216 @@
+<div ng-controller="AppCtlr as app" class="docks-transition" ng-class="sidebarActive ? 'sidebar-darken' : ''">
+
+	<div ng-class="sidebarActive ? 'sidebar-blur' : ''" class="docks-transition" ng-if="!readme">
+		<div class="heading">
+			<div class="section">
+				<h1 ng-bind="module.toUpperCase()"></h1>
+				<p ng-if="description" ng-bind="description"></p>
+			</div>
+		</div>
+		<div class="section info">
+			<h2 demo-toggle-parent="collapsed"><a id="{{info}}"></a>Install</h2>
+
+			<div class="properties collapse">
+				<div class="options-wrapper">
+					<div class="options">
+						<div class="option">
+							<div class="left">
+								<p><b>Bower</b></p>
+							</div>
+							<div class="right">
+								<p><pre><code>bower install {{module.toLowerCase()}}</code></pre></p>
+							</div>
+						</div>
+					</div>
+					<div class="options">
+						<div class="option">
+							<div class="left">
+								<p><b>Add as a dependency</b></p>
+							</div>
+							<div class="right">
+								<p><pre><code>angular.module('yourApp, ['{{module}}'])</code></pre></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="section directives collapsed" ng-repeat="directive in directives track by $index">
+			<h2 demo-toggle-parent="collapsed"><a id="{{directive.name}}"></a><span ng-bind="directive.name"></span><small ng-if="directive.meta.description" ng-bind="directive.meta.description"></small></h2>
+
+			<div demo-compile="createElement(directive)" class="collapse"></div>
+
+			<div ng-if="directive.meta.markup" class="options-wrapper collapse">
+				<h3>Markup</h3>
+				<code ng-bind="directive.meta.markup"></code>
+			</div>
+
+			<div class="properties collapse" ng-repeat="(p, property) in directive.meta.properties track by p">
+				<div class="options-wrapper">
+					<h3 ng-bind="p.toUpperCase()"></h3>
+					<div class="options">
+						<div class="option" ng-repeat="(key, option) in property track by $index" ng-class="option.invalid ? 'invalid' : ''">
+							<div class="left">
+								<p><b ng-bind="key"></b></p>
+								<p><span ng-bind="option.type"></span> - <i ng-bind="option.invalid || option.description"></i></p>
+							</div>
+							<div class="right">
+								<demo-input model="option" directive="directive"></demo-input>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="section services collapsed" ng-repeat="service in services track by $index">
+			<h2 demo-toggle-parent="collapsed"><a id="{{service.name}}"></a><span ng-bind="service.name"></span><small ng-if="service.meta.description" ng-bind="service.meta.description"></small></h2>
+
+			<div class="properties collapse" ng-repeat="(p, property) in service.meta.properties track by p">
+				<div class="options-wrapper">
+					<h3><span ng-bind="p"></span><span>&nbsp;-&nbsp;</span><small ng-bind="property.description"></small></h3>
+					<div class="options">
+						<div class="option" ng-repeat="(key, option) in property track by $index" ng-if="key !== 'description'">
+							<div class="left">
+								<p ng-if="key !== 'returns'"><b ng-bind="key"></b></p>
+								<p ng-if="key === 'returns'"><b ng-bind="key"></b> - <i ng-bind="option.type"></i></p>
+							</div>
+							<div class="right">
+								<div ng-if="key === 'returns'">
+									<p ng-bind-html="option.description"></p>
+								</div>
+								<div ng-if="key === 'arguments'">
+									<div class="options">
+										<div class="option" ng-repeat="(a, argument) in option track by $index">
+											<div class="left">
+												<p><b ng-bind="a"></b></p>
+											</div>
+											<div class="right">
+												<p><i ng-bind="argument.type"></i><span></span><span ng-if="argument.description" ng-bind-html="' - ' + argument.description"></span></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div ng-if="!readme" id="sidebar" ng-click="sidebarActive = sidebarActive ? 0 : 1" ng-class="sidebarActive ? 'active' : ''">
+		<div style="text-align: center; padding: 0px 7px 7px; margin-top: -5px;"><i style="font-size: 18px;" class="fa" ng-class="sidebarActive ? 'fa-angle-double-down' : 'fa-angle-double-up'"></i></div>
+		<div ng-if="directives.length" style="margin-bottom: 21px;">
+			<h5 class="directives">Directives</h5>
+			<a ng-repeat="directive in directives track by $index" href="#{{directive.name}}" ng-click="ctlr.anchorScroll()" ng-bind="directive.name"></a>
+		</div>
+		<div ng-if="services.length" style="margin-bottom: 21px;">
+			<h5 class="services">Services</h5>
+			<a ng-repeat="service in services track by $index" href="#{{service.name}}" ng-click="ctlr.anchorScroll()" ng-bind="service.name"></a>
+		</div>
+	</div>
+
+	<div ng-if="readme" id="readme">
+		<p ng-bind="'# ' + module"></p>
+		<p>&nbsp;</p>
+		<p ng-if="description" ng-bind="description"></p>
+		<p>&nbsp;</p>
+		<p>## Install</p>
+		<p>&nbsp;</p>
+		<p>* * *</p>
+		<p>&nbsp;</p>
+		<p>`bower install {{module}}`</p>
+		<p>&nbsp;</p>
+		<p>**Add to your app**</p>
+		<p>&nbsp;</p>
+		<p>`angular.module('app’, ['{{module}}])`</p>
+		<p>&nbsp;</p>
+		<p>[Live demo](http://{{module}}.cklsylabs.com/)</p>
+		<p>&nbsp;</p>
+		<div ng-if="directives.length">
+			<p>&nbsp;</p>
+			<p># Directives</p>
+			<p>&nbsp;</p>
+			<p>* * *</p>
+			<p>&nbsp;</p>
+
+			<div ng-repeat="directive in directives track by $index">
+				<p>## {{directive.name}}</p>
+				<p>&nbsp;</p>
+				<div ng-if="directive.meta.description">
+					<p ng-bind="directive.meta.description"></p>
+					<p>&nbsp;</p>
+				</div>
+				<div ng-if="directive.meta.markup">
+					<p>**MARKUP**</p>
+					<p>&nbsp;</p>
+					<p>```html</p>
+					<p ng-bind="directive.meta.markup"></p>
+					<p>  ```</p>
+					<p>&nbsp;</p>
+				</div>
+				<div ng-repeat="(p, property) in directive.meta.properties track by p">
+					<p>**{{p.toUpperCase()}}**</p>
+					<p>&nbsp;</p>
+					<div ng-repeat="(key, option) in property track by $index">
+						<p>`{{key}}` <span ng-if="option.type">- *{{option.type}}* -</span> <span ng-bind="option.description"></span></p>
+						<p>&nbsp;</p>
+					</div>
+					<p>&nbsp;</p>
+				</div>
+				<p>&nbsp;</p>
+				<p>* * *</p>
+				<p>&nbsp;</p>
+			</div>
+			<p>&nbsp;</p>
+		</div>
+
+		<div ng-if="directives.length">
+			<p>&nbsp;</p>
+			<p># Services</p>
+			<p>&nbsp;</p>
+			<p>* * *</p>
+			<p>&nbsp;</p>
+
+			<div ng-repeat="service in services track by $index">
+				<p>## {{service.name}}</p>
+				<p>&nbsp;</p>
+				<div ng-if="service.meta.description">
+					<p ng-bind="service.meta.description"></p>
+					<p>&nbsp;</p>
+				</div>
+
+				<div ng-repeat="(p, property) in service.meta.properties track by p">
+					<p>### {{p}}</p>
+					<p>&nbsp;</p>
+					<div ng-repeat="(key, option) in property track by $index" ng-if="key !== 'description'">
+						<div ng-if="key === 'returns'">
+							<p>***{{key}} <span ng-if="option.type">- {{option.type}}</span>***</p>
+							<p>```javascript</p>
+							<p><span ng-bind-html="option.description"></span></p>
+							<p>  ```</p>
+							<p>&nbsp;</p>
+						</div>
+
+						<div ng-if="key !== 'returns'">
+							<p>**{{key}}**</p>
+							<p>&nbsp;</p>
+							<div ng-repeat="(a, argument) in option track by $index">
+								<p>&nbsp;*&nbsp;`{{a}}` <span ng-if="argument.type">- *{{argument.type}}*</span> </p>
+								<p>```html</p>
+								<p><span ng-bind-html="argument.description"></span></p>
+								<p>  ```</p>
+								<p>&nbsp;</p>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<p>&nbsp;</p>
+				<p>* * *</p>
+				<p>&nbsp;</p>
+			</div>
+		</div>
+	</div>
+</div>
