@@ -7,6 +7,7 @@
         return {
             restrict: 'E',
             scope: {
+				onChange: '=?',
                 elementId: '=',     // OPTIONAL: The id of container element
                 inputId: '=',       // OPTIONAL: the id of the input
                 model:'=',          // The model to watch
@@ -132,6 +133,10 @@
                                 }catch(e){}
                                 break;
                         }
+
+						if(scope.onChange){
+							scope.onChange(scope.model);
+						}
 
                     }
                 });
